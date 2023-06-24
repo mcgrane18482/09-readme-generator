@@ -51,32 +51,45 @@ const questions = [
     },
 ];
 
-inquirer.prompt(questions)
-    .then(({
-        title,
-        description,
-        installation,
-        usage,
-        credits,
-        license,
-        github,
-        contributions}) => {
-        console.log(title,
-            description,
-            installation,
-            usage,
-            credits,
-            license,
-            github,
-            contributions);
-    });
-
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+// function writeToFile(content) {
+    
+// }
+
+// writeToFile(content)
+
+
+inquirer.prompt(questions)
+        .then(({title, description, installation, usage, credits, license, github, contributions}) => {
+            let content = `# ${title} \n
+## Descrption
+${description} \n
+## Installation
+${installation} \n
+## Usage
+${usage} \n
+## Credits
+${credits} \n
+## License:
+${license} \n
+## Contact:
+${github} \n
+## Contributing:
+${contributions}`;
+      
+
+        fs.writeFile('./README.md', content, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        })
+    });
 
 // TODO: Create a function to initialize app
-// function init() {}
+// function init() {
+    
+// }
 
 // Function call to initialize app
 // init();
