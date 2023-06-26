@@ -39,10 +39,9 @@ function generateTOC(data){
   * [Contributing](#contributing)\n`;
 }
 
-
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `# ${data.title} ${renderLicenseBadge(data.license)}
   ${generateTOC(data.license)}
   ## Description
   ${data.description}
@@ -53,9 +52,10 @@ function generateMarkdown(data) {
   ## Credits
   ${data.credits}
   ${renderLicenseSection(data.license)} 
-  ${renderLicenseBadge(data.license)}
-  ## Contact
-  ${data.github}
+  ## Questions
+  You can reach me via email if you have any questions about this application.
+  * GitHub: ${data.github}
+  * email: ${data.email}
   ## Contributing
   ${data.contributions}
 `;
