@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license !== 'None') {
-    return `\n* [License](#license)\n`;
+    return `[License](#license)`;
   }
   return '';
 }
@@ -22,15 +22,42 @@ function renderLicenseSection(license) {
   if (license !== 'None') {
     return `## License
 
-This project is licensed under the ${license} license.`;
+This project is licensed under the ${license} license.
+`;
   }
   return '';
 }
 
+// A funciton that generates the Table of Contents
+function generateTOC(data){
+  return `## Table of Contents
+  * [Description](#description)\n
+  * [Installation](#installation)\n
+  * [Usage](#usage)\n
+  * ${renderLicenseLink(data.license)}\n
+  * [Contact](#contact)\n
+  * [Contributing](#contributing)\n`;
+}
+
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
-
+  ${generateTOC(data.license)}
+  ## Description
+  ${data.description}
+  ## Installation
+  ${data.installation}
+  ## Usage
+  ${data.usage}
+  ## Credits
+  ${data.credits}
+  ${renderLicenseSection(data.license)} 
+  ${renderLicenseBadge(data.license)}
+  ## Contact
+  ${data.github}
+  ## Contributing
+  ${data.contributions}
 `;
 }
 
